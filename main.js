@@ -31,12 +31,7 @@ let shopItemsData = [
   },
 ];
 
-let basket = [
-  {
-    id: "callie",
-    item: 1,
-  },
-];
+let basket = [];
 
 let generateShop = () => {
   return (shop.innerHTML = shopItemsData
@@ -68,10 +63,25 @@ generateShop();
 
 let increment = (id) => {
   let selectedItem = id;
-  console.log(selectedItem.id);
+  let search = basket.find((x) => x.id === selectedItem.id);
+
+  // if the item is not the the basket push item object in basket
+  if (search === undefined) {
+    basket.push({
+      id: selectedItem.id,
+      item: 1,
+    });
+    // else the item is already present incrementlty add 1
+  } else {
+    search.item += 1;
+  }
+
+  console.log(basket);
 };
+
 let decrement = (id) => {
   let selectedItem = id;
   console.log(selectedItem.id);
 };
+
 let update = () => {};
