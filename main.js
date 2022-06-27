@@ -61,27 +61,60 @@ let generateShop = () => {
 
 generateShop();
 
+/** increment()
+ * * Increase amount of an item in basket
+ * @param {selectedItem} id
+ * if the item is not already in the basket push item in basket
+ * else  the item is already in basket incremently increase by 1
+ */
+
 let increment = (id) => {
   let selectedItem = id;
   let search = basket.find((x) => x.id === selectedItem.id);
 
-  // if the item is not the the basket push item object in basket
   if (search === undefined) {
     basket.push({
       id: selectedItem.id,
       item: 1,
     });
-    // else the item is already present incrementlty add 1
   } else {
     search.item += 1;
   }
 
-  console.log(basket);
+  // console.log(basket);
+  update(selectedItem.id);
 };
+
+/** decrement()
+ * * Decrease amount of an item in basket until it reaches 0
+ * @param {selectedItem} id
+ * if the item is not is the basket and is 0 return 0
+ * else the item is already present incremently decrease by 1
+ */
 
 let decrement = (id) => {
   let selectedItem = id;
-  console.log(selectedItem.id);
+  let search = basket.find((x) => x.id === selectedItem.id);
+
+  if (search.item === 0) return;
+  else {
+    search.item -= 1;
+  }
+
+  // console.log(basket);
+  update(selectedItem.id);
 };
 
-let update = () => {};
+/** update()
+ * * Updates the value of an item
+ * @param {id} selectedItem
+ * update amount and show in HTML
+ */
+
+let update = (id) => {
+  let search = basket.find((x) => x.id === id);
+  console.log(search.item);
+  document.getElementById(id).innerHTML = search.item;
+};
+
+let calculation = () => {};
