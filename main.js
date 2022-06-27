@@ -113,8 +113,20 @@ let decrement = (id) => {
 
 let update = (id) => {
   let search = basket.find((x) => x.id === id);
-  console.log(search.item);
+  // console.log(search.item);
   document.getElementById(id).innerHTML = search.item;
+  calculation();
 };
 
-let calculation = () => {};
+/** calculation()
+ * * Calculates the cart amount by the updated value items selected
+ * Update the cart amount and show in HTML
+ * map out the items in the basket
+ * reduce the value to equal a sum of all items
+ */
+
+let calculation = () => {
+  let cartIcon = document.getElementById("cart__amount");
+  cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
+  // console.log(basket.map((x) => x.item).reduce((x, y) => x + y, 0));
+};
