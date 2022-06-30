@@ -50,3 +50,30 @@ let generateShop = () => {
 
 generateShop();
 ```
+
+### increment(id)
+
+- Contain the object id in a var `selectedItem`
+- access basket arr + apply `find()`
+- find(); returns the first element in the provided arr that satisfies the provided testing function
+- testing func; if the `x.id === selectedItem.id`
+- Contain function in a var `search`
+
+```js
+let search = basket.find((x) => x.id === selectedItem.id);
+```
+
+- if the basket arr does not contain the item
+- `push()` the item object in the basket arr
+- else the item object is already in the basket arr incremently increase by +1
+
+```js
+if (search === undefined) {
+  basket.push({
+    id: selectedItem.id,
+    item: 1,
+  });
+} else {
+  search.item += 1;
+}
+```
