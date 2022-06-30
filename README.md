@@ -1,4 +1,6 @@
-# Destructuring
+# Shopping Cart
+
+## Destructuring
 
 Refactor an objects key values so you can use the name of the key in an object literal without referencing the object again
 
@@ -51,7 +53,9 @@ let generateShop = () => {
 generateShop();
 ```
 
-### increment(id)
+## Functions
+
+### increment()
 
 - Contain the object id in a var `selectedItem`
 - access basket arr + apply `find()`
@@ -77,3 +81,28 @@ if (search === undefined) {
   search.item += 1;
 }
 ```
+
+### decrement()
+
+- Contain the object id in a var `selectedItem`
+- access the basket arr and apply `find()`
+- `find()`; returns the first element in the provided arr that satisfies the provided testing function
+- testing func; if item selected is already found in the basket arr
+
+```js
+let search = basket.find((x) => x.id === selectedItem.id);
+```
+
+- if the item searched === 0 return func
+- else incremently decrease -1
+
+```js
+if (search.item === 0) return;
+else {
+  search.item -= 1;
+}
+```
+
+### update()
+
+### calculation()
