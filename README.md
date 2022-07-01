@@ -130,5 +130,39 @@ let cartIcon = document.getElementById("cart__amount");
 - Have the var `cartIcon` take on the value of the `basket` arr item's sum by apply the `reduce()`
 
 ```js
-let cartIcon = document.getElementById("cart__amount");
+cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
+```
+
+## Local Storage
+
+### localStorage.setItem()
+
+- sets the data to local storage
+
+```js
+localStorage.setItem("data", JSON.stringify(basket));
+```
+
+### localStoage.getItem()
+
+- get data from local storage
+
+```js
+let basket = JSON.parse(localStorage.getItem("data")) || [];
+```
+
+- Initallize `search` var to use in object literal
+- or have it equal an empyt arr
+
+```js
+let search = basket.find((x) => x.id === id) || [];
+```
+
+- if search item amount is undefined have it equal 0
+- else return the search item amount value
+
+```js
+`<div id="${id}" class="quantity">${
+  search.item === undefined ? 0 : search.item
+}</div>`;
 ```
