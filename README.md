@@ -105,4 +105,30 @@ else {
 
 ### update()
 
+- check basket arr if the item is === to the selectedItem id
+
+```js
+let search = basket.find((x) => x.id === id);
+
+// Output: Object { id: "ame", item: 1 }
+```
+
+- get the item value of the selectedItem and display in HTML
+
+```js
+document.getElementById(id).innerHTML = search.item;
+```
+
 ### calculation()
+
+- Access the `cart__amount` HTML element and contain in a var `cartIcon`
+
+```js
+let cartIcon = document.getElementById("cart__amount");
+```
+
+- Have the var `cartIcon` take on the value of the `basket` arr item's sum by apply the `reduce()`
+
+```js
+let cartIcon = document.getElementById("cart__amount");
+```
