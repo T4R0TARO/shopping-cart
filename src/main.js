@@ -1,35 +1,12 @@
-let shop = document.getElementById("shop");
+// * "use strict" :
+//  must hav var, let, const when declaring a variable
+//  deleting var are is resitricted
+//  duplicate named var are restricted
+//  func param must be unique
+//   more...
+"use strict";
 
-let shopItemsData = [
-  {
-    id: "ame",
-    name: "Casual Shirt",
-    price: 45,
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-    img: "images/img-1.jpg",
-  },
-  {
-    id: "gura",
-    name: "Office Shirt",
-    price: 100,
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-    img: "images/img-2.jpg",
-  },
-  {
-    id: "ina",
-    name: "T Shirt",
-    price: 25,
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-    img: "images/img-3.jpg",
-  },
-  {
-    id: "kiara",
-    name: "Men's Suit",
-    price: 300,
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-    img: "images/img-4.jpg",
-  },
-];
+let shop = document.getElementById("shop");
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
 
@@ -83,9 +60,10 @@ let increment = (id) => {
   } else {
     search.item += 1;
   }
-  localStorage.setItem("data", JSON.stringify(basket));
   // console.log(basket);
   update(selectedItem.id);
+
+  localStorage.setItem("data", JSON.stringify(basket));
 };
 
 /** decrement()
@@ -99,14 +77,17 @@ let decrement = (id) => {
   let selectedItem = id;
   let search = basket.find((x) => x.id === selectedItem.id);
 
-  if (search.item === 0) return;
+  //* debbuger
+  if (search === undefined) return;
+  else if (search.item === 0) return;
   else {
     search.item -= 1;
   }
-  localStorage.setItem("data", JSON.stringify(basket));
 
-  // console.log(basket);
   update(selectedItem.id);
+  basket = basket.filter((x) => x.item !== 0);
+  // console.log(basket);
+  localStorage.setItem("data", JSON.stringify(basket));
 };
 
 /** update()
